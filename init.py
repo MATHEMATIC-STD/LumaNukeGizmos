@@ -181,7 +181,7 @@ class GizmoPathManager(object):
                 if defaultSubMenu:
                     subMenu = toolbar.findItem(defaultSubMenu)
                 else:
-                    subMenu = toolbar.addMenu(folder)
+                    subMenu = toolbar.addMenu(folder, icon=folder + ".png")
             self._recursiveAddGizmoMenuItems(subMenu, data)
 
 
