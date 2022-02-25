@@ -1,47 +1,3 @@
-'''
-Introduction
-============
-This script recursively adds path trees rooted in one or more directories to
-the Nuke plugin path. If Nuke is running in GUI mode, it can also be used to
-automatically build menu trees for any gizmo files it locates. (Note: see the
-accompanying `menu.py` file for a predefined implementation of this.)
-
-These root directories can be resolved in several ways. In order of precedence,
-they are:
-
-    1) Using the `CUSTOM_GIZMO_LOCATION` variable below, if it is set to an
-        existing directory. Note that environment variables will be expanded.
-    2) From the `NUKE_GIZMO_PATH` environment variable, if it is set.
-    3) The location of the file in which the ``GizmoPathManager`` code resides.
-    4) The Nuke plugin path.
-
-
-Installation
-============
-To use the ``GizmoPathManager``, copy or move this file as-is to a directory on
-your Nuke plugin path, or merge its contents with an existing `init.py` file.
-The default directories included on the plugin path are:
-
-Linux::
-
-    /users/<LOGIN NAME>/.nuke
-    /usr/local/Nuke6.2v6/plugins
-
-Mac OS X::
-
-    /Users/<LOGIN NAME>/.nuke
-    /Applications/Nuke6.2v6/Nuke6.2v6.app/Contents/MacOS/plugins
-
-Windows:
-    In the .nuke directory, which can be found under the directory pointed to
-    by the HOME environment variable. If this variable is not set (which is
-    common), the .nuke directory will be under the folder specified by the
-    USERPROFILE environment variable, which is generally in one of the
-    following forms::
-
-    <DRIVE LETTER>:\Documents and Settings\<LOGIN NAME>\    (Windows XP)
-    <DRIVE LETTER>:\Users\<LOGIN NAME>\                     (Windows Vista/7)
-'''
 import os
 import re
 
@@ -71,7 +27,7 @@ class GizmoPathManager(object):
         'exclude': A regular expression for folders and gizmo files to ignore.
         The default pattern ignores anything beginning with `.`.
         '''
-        if isinstance(exclude, basestring):
+        if isinstance(exclude, str):
             exclude = re.compile(exclude)
         self.exclude = exclude
         if searchPaths is None:
@@ -174,7 +130,7 @@ class GizmoPathManager(object):
                 niceName = name[:-4]
             toolbar.addCommand(niceName,"nuke.createNode('%s')" % name)
 
-        for folder, data in crawlData.get('dirs', {}).iteritems():
+        for folder, data in crawlData.get('dirs', {}).items():
             import sys
             subMenu = toolbar.findItem(folder)
             if subMenu is None:

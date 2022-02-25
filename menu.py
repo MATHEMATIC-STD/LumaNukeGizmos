@@ -1,4 +1,4 @@
-'''
+"""
 Notes
 =====
 This file is meant to be deployed alongside the included `init.py`, and invokes
@@ -43,11 +43,12 @@ command that already exists, it will replace the existing item.
 
 
 *Example gizmo names taken from Nukepedia.com
-'''
+"""
+
 if __name__ == '__main__':
     gizManager = globals().get('gizManager', None)
     if gizManager is None:
-        print 'Problem finding GizmoPathManager - check that init.py was setup correctly'
+        print('Problem finding GizmoPathManager - check that init.py was setup correctly')
     else:
         gizManager.addGizmoMenuItems()
         del gizManager
