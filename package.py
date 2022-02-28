@@ -1,6 +1,6 @@
 # coding: utf-8
 name = "lumaNukeGizmos"
-version = "0.0.1"
+version = "0.0.2"
 requires = [
     "nuke",
 ]
