@@ -559,13 +559,4 @@ Output {
  ypos 2970
 }
 push $N4161e40
-push $N4130f60
-Viewer {
- inputs 2
- viewerProcess None
- input_process false
- name Viewer1
- xpos 2087
- ypos 3147
-}
 end_group
